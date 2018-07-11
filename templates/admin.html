@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<<<<<<< HEAD:templates/admin.html
+        <title>Advanced Login - Admin Dashboard</title>
+=======
+        <title>Success</title>
+>>>>>>> 7c4b5783733809ebfd1c0792af1af59eb9b69d94:templates/success.html
+        <!-- linking a css style sheet -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+        <!-- Linking Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- linking a javascript file -->
+        <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script> -->
+    </head>
+    <body>
+        <div class="container">
+            <div class='heading'>
+                <h1>Advanced Login - Admin Page</h1>
+                <p>Welcome {{ session['name'] }}!</p>
+                <form action='/destroy_session'>
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+            </div>
+            <h3>Hello {{ session['name'] }}! You're just a normal user. Until we add some features you can't do much yet... Sorry. </h3>
+        </div>
+    </body>
+</html>

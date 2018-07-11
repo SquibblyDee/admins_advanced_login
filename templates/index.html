@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Login</title>
+        <!-- linking a css style sheet -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+        <!-- Linking Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- linking a javascript file -->
+        <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script> -->
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="heading">Advanced Login</h1>
+            <div class="login">
+                <h2><u>Login</u></h2>
+                <form class='form-horizontal' role='form' action='/process_login' , method='post'>
+                    <div class="form-group">
+                        <label for="login_email">Email:</label>
+                        <input type="email" name="login_email" class="form-control" id="login_email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="login_password">Password:</label>
+                        <input type="password" name="login_password" class="form-control" id="login_password" placeholder="Password">
+                    </div>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                {%if "combo" in message %}
+                                <p>{{message}}</p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+            </div>
+            <div class="registration">
+                <h2><u>Registration</u></h2>
+                <form class='form-horizontal' role='form' action="/process" , method='post'>
+                    <div class="form-group">
+                        <label for="input_first_name">First name:</label>
+                        <!-- loop through our flash messages and filter them for "Email" -->
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {%if "First" in message %}
+                                    <p>{{message}}<p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <input type="text" name="input_first_name" class="form-control" id="input_first_name" placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_last_name">Last name:</label>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {%if "Last" in message %}
+                                    <p>{{message}}<p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <input type="text" name="input_last_name" class="form-control" id="input_last_name" placeholder="Enter last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_email">Email:</label>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {%if "taken" in message or "Email" in message %}
+                                    <p>{{message}}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <input type="email" name="input_email" class="form-control" id="input_email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_password">Password:</label>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {%if "8" in message %}
+                                    <p>{{message}}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <input type="password" name="input_password" class="form-control" id="input_password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_confirm_password">Confirm password:</label>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {%if "match" in message %}
+                                    <p>{{message}}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <input type="password" name="input_confirm_password" class="form-control" id="input_confirm_password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
